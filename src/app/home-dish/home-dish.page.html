@@ -1,0 +1,34 @@
+<ion-header>
+    <ion-toolbar>
+        <app-my-header></app-my-header>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-list class="ios list-ios hydrated body">
+        <ion-list-header class="ios hydrated">
+            <h2>Список блюд</h2>
+
+        </ion-list-header>
+
+        <ion-item *ngFor="let dish of Dishings;index as i" class="user-list">
+            <ion-label>
+                <h5>
+                    <ion-icon name="fast-food-outline"></ion-icon>{{dish.name}}
+                </h5>
+                <p>
+                    <ion-icon name="cash-outline"></ion-icon> {{dish.price}}
+                </p>
+            </ion-label>
+
+            <div class="item-note" item-end>
+                <button ion-button clear [routerLink]="['/edit-dish/', dish.$key]">
+          <ion-icon name="create" style="zoom:2.0"></ion-icon>
+        </button>
+                <button ion-button clear (click)="deleteDishing(dish.$key)">
+          <ion-icon name="trash" style="zoom:2.0"></ion-icon>
+        </button>
+            </div>
+        </ion-item>
+    </ion-list>
+</ion-content>
